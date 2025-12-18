@@ -10,6 +10,9 @@ void matSub(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]);
 // transpose: B = A^T
 void matTranspose(int A[SIZE][SIZE], int B[SIZE][SIZE]);
 
+// Element wise multiplication
+void matMul_element_wise(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]);
+
 // multiplication: C = A * B
 void matMul(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]);
 

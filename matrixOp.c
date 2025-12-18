@@ -40,6 +40,17 @@ void matTranspose(int A[SIZE][SIZE], int B[SIZE][SIZE]) {
 	}
 }
 
+// matMul_element_wise
+void matMul_element_wise(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
+	int i, j;
+	for(i=0; i<SIZE; i++) {
+		for(j=0; j<SIZE; j++) {
+			C[i][j] = A[i][j] * B[i][j];
+		}
+	}
+}
+
+
 // multiplication: C = A * B
 void matMul(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	int i, j, k;
@@ -110,6 +121,7 @@ void printMatrixDouble(double D[SIZE][SIZE]) {
 
 void printMatrix(int D[SIZE][SIZE]) {
 	int i, j;
+	printf("Result matrix: \n");
 	for(i=0; i<SIZE; i++) {
 		for(j=0; j<SIZE; j++) {
 			printf("%d ", D[i][j]);

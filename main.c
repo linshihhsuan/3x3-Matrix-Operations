@@ -20,7 +20,7 @@ int main() {
 		}
 	}
 	
-    matAdjoint3x3(A, C);
+    matMul_element_wise(A, B, C);
     printMatrix(C);
 	
 	return 0;
