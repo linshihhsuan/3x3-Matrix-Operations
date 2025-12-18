@@ -24,7 +24,7 @@ void matAdjoint3x3(int A[SIZE][SIZE], int adj[SIZE][SIZE]);
 int matInverse3x3(int A[SIZE][SIZE], double inv[SIZE][SIZE]);
 
 // print matrix
-void printMatrixInt(int D[SIZE][SIZE]);
-void printMatrixDouble(double A[SIZE][SIZE]);
+void printMatrix(int D[SIZE][SIZE]);
+void printMatrixDouble(double D[SIZE][SIZE]);
 
 #endif

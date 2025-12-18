@@ -23,7 +23,7 @@ void matSub(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	}
 }
 
-// Transpose: B = A^T
+// transpose: B = A^T
 void matTranspose(int A[SIZE][SIZE], int B[SIZE][SIZE]) {
 	int i, j;
 	int temp_i = 0, temp_j = 0;
@@ -40,6 +40,7 @@ void matTranspose(int A[SIZE][SIZE], int B[SIZE][SIZE]) {
 	}
 }
 
+// multiplication: C = A * B
 void matMul(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	int i, j, k;
 	for(i=0; i<SIZE; i++) {
@@ -52,26 +53,28 @@ void matMul(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	}
 }
 
+// determinant
 int matDet3x3(int A[SIZE][SIZE]) {
     int det;
-    det =  A[0][0] * (A[1][1] * A[2][2] - A[1][2] * A[2][1])
-        -  A[0][1] * (A[1][0] * A[2][2] - A[1][2] * A[2][0])
-        +  A[0][2] * (A[1][0] * A[2][1] - A[1][1] * A[2][0]);
+    det = A[0][0] * (A[1][1]*A[2][2] - A[1][2]*A[2][1])
+		- A[0][1] * (A[1][0]*A[2][2] - A[1][2]*A[2][0])
+        + A[0][2] * (A[1][0]*A[2][1] - A[1][1]*A[2][0]);
     return det;
 }
 
+// adjoint: Adj(A) = adj  // adjunct matrix
 void matAdjoint3x3(int A[SIZE][SIZE], int adj[SIZE][SIZE]) {
 
     adj[0][0] =  (A[1][1]*A[2][2] - A[1][2]*A[2][1]);
-    adj[0][1] = -(A[1][0]*A[2][2] - A[1][2]*A[2][0]);
-    adj[0][2] =  (A[1][0]*A[2][1] - A[1][1]*A[2][0]);
+    adj[1][0] = -(A[1][0]*A[2][2] - A[1][2]*A[2][0]);
+    adj[2][0] =  (A[1][0]*A[2][1] - A[1][1]*A[2][0]);
 
-    adj[1][0] = -(A[0][1]*A[2][2] - A[0][2]*A[2][1]);
+    adj[0][1] = -(A[0][1]*A[2][2] - A[0][2]*A[2][1]);
     adj[1][1] =  (A[0][0]*A[2][2] - A[0][2]*A[2][0]);
-    adj[1][2] = -(A[0][0]*A[2][1] - A[0][1]*A[2][0]);
+    adj[2][1] = -(A[0][0]*A[2][1] - A[0][1]*A[2][0]);
 
-    adj[2][0] =  (A[0][1]*A[1][2] - A[0][2]*A[1][1]);
-    adj[2][1] = -(A[0][0]*A[1][2] - A[0][2]*A[1][0]);
+    adj[0][2] =  (A[0][1]*A[1][2] - A[0][2]*A[1][1]);
+    adj[1][2] = -(A[0][0]*A[1][2] - A[0][2]*A[1][0]);
     adj[2][2] =  (A[0][0]*A[1][1] - A[0][1]*A[1][0]);
 }
 
@@ -95,7 +98,17 @@ int matInverse3x3(int A[SIZE][SIZE], double inv[SIZE][SIZE]) {
 }
 
 // print matrix
-void printMatrixInt(int D[SIZE][SIZE]) {
+void printMatrixDouble(double D[SIZE][SIZE]) {
+	int i, j;
+	for(i=0; i<SIZE; i++) {
+		for(j=0; j<SIZE; j++) {
+			printf("%4f ", D[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void printMatrix(int D[SIZE][SIZE]) {
 	int i, j;
 	for(i=0; i<SIZE; i++) {
 		for(j=0; j<SIZE; j++) {
