@@ -5,6 +5,8 @@
 int main() {
 	int i, j;
 	int A[SIZE][SIZE], B[SIZE][SIZE], C[SIZE][SIZE];
+	double dst[SIZE][SIZE];
+
     // Input matrixA
     printf("Enter A (3x3): ");
 	for(i=0; i<SIZE; i++) {
@@ -12,6 +14,7 @@ int main() {
 			scanf("%d", &A[i][j]);
 		}
 	}
+
 	// Input matrixB
     printf("Enter B (3x3): ");
 	for(i=0; i<SIZE; i++) {
@@ -20,8 +23,10 @@ int main() {
 		}
 	}
 	
-    matMul_element_wise(A, B, C);
-    printMatrix(C);
+	matMul(A, B, C);
+	printMatrix(C);
+	intMatToDouble(C, dst);  // Transform int C[][] to double dst[][]
+	printMatrixDouble(dst);
 	
 	return 0;
 }

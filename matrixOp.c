@@ -23,7 +23,7 @@ void matSub(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	}
 }
 
-// transpose: B = A^T
+// Transpose: B = A^T
 void matTranspose(int A[SIZE][SIZE], int B[SIZE][SIZE]) {
 	int i, j;
 	int temp_i = 0, temp_j = 0;
@@ -40,7 +40,7 @@ void matTranspose(int A[SIZE][SIZE], int B[SIZE][SIZE]) {
 	}
 }
 
-// matMul_element_wise
+// Element wise multiplication Ci,j = Ai,j * Bi,j
 void matMul_element_wise(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	int i, j;
 	for(i=0; i<SIZE; i++) {
@@ -51,7 +51,7 @@ void matMul_element_wise(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]
 }
 
 
-// multiplication: C = A * B
+// Multiplication: C = A * B
 void matMul(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	int i, j, k;
 	for(i=0; i<SIZE; i++) {
@@ -64,7 +64,7 @@ void matMul(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
 	}
 }
 
-// determinant
+// Determinant(3x3)
 int matDet3x3(int A[SIZE][SIZE]) {
     int det;
     det = A[0][0] * (A[1][1]*A[2][2] - A[1][2]*A[2][1])
@@ -73,7 +73,7 @@ int matDet3x3(int A[SIZE][SIZE]) {
     return det;
 }
 
-// adjoint: Adj(A) = adj  // adjunct matrix
+// Adjoint: Adj(A) = adj
 void matAdjoint3x3(int A[SIZE][SIZE], int adj[SIZE][SIZE]) {
 
     adj[0][0] =  (A[1][1]*A[2][2] - A[1][2]*A[2][1]);
@@ -89,6 +89,8 @@ void matAdjoint3x3(int A[SIZE][SIZE], int adj[SIZE][SIZE]) {
     adj[2][2] =  (A[0][0]*A[1][1] - A[0][1]*A[1][0]);
 }
 
+// Inverse: inv[]  // Using double for storage is more precise
+// Return 1 means success, return 0 means det = 0
 int matInverse3x3(int A[SIZE][SIZE], double inv[SIZE][SIZE]) {
 	int i, j;
     int det = matDet3x3(A);
@@ -108,24 +110,36 @@ int matInverse3x3(int A[SIZE][SIZE], double inv[SIZE][SIZE]) {
     return 1;
 }
 
-// print matrix
-void printMatrixDouble(double D[SIZE][SIZE]) {
-	int i, j;
-	for(i=0; i<SIZE; i++) {
-		for(j=0; j<SIZE; j++) {
-			printf("%4f ", D[i][j]);
-		}
-		printf("\n");
-	}
-}
-
+// Print matrix with int type
 void printMatrix(int D[SIZE][SIZE]) {
 	int i, j;
 	printf("Result matrix: \n");
 	for(i=0; i<SIZE; i++) {
 		for(j=0; j<SIZE; j++) {
-			printf("%d ", D[i][j]);
+			printf("%2d ", D[i][j]);
 		}
 		printf("\n");
 	}
 }
+
+// Transform int arr[] to double arr[]
+void intMatToDouble(int src[SIZE][SIZE], double dst[SIZE][SIZE]) {
+	int m, n;
+	for(m=0; m<SIZE; m++) {
+		for(n=0; n<SIZE; n++) {
+			dst[m][n] = (double)src[m][n];
+		}
+	}
+}
+
+// Print matrix with double type
+void printMatrixDouble(double D[SIZE][SIZE]) {
+	int i, j;
+	for(i=0; i<SIZE; i++) {
+		for(j=0; j<SIZE; j++) {
+			printf("%3.2f ", D[i][j]);
+		}
+		printf("\n");
+	}
+}
+
