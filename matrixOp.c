@@ -117,7 +117,6 @@ int matInverse3x3(int A[SIZE][SIZE], double inv[SIZE][SIZE]) {
 // Print matrix with int type
 void printMatrix(int D[SIZE][SIZE]) {
 	int i, j;
-	printf("Result matrix: \n");
 	for(i=0; i<SIZE; i++) {
 		for(j=0; j<SIZE; j++) {
 			printf("%2d ", D[i][j]);
