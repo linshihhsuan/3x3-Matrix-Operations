@@ -101,10 +101,14 @@ int matInverse3x3(int A[SIZE][SIZE], double inv[SIZE][SIZE]) {
     int adj[SIZE][SIZE] = {0};
     matAdjoint3x3(A, adj);
 
+	// Transform int arr[] to double arr[]
+	double adj_double[SIZE][SIZE];
+	intMatToDouble(adj, adj_double);
+
     // inv = adj / det
     for(i=0; i<SIZE; i++) {
         for(j=0; j<SIZE; j++) {
-            inv[i][j] = adj[i][j] / (double)det;
+            inv[i][j] = adj_double[i][j] / (double)det;
         }
     }
     return 1;
@@ -137,7 +141,7 @@ void printMatrixDouble(double D[SIZE][SIZE]) {
 	int i, j;
 	for(i=0; i<SIZE; i++) {
 		for(j=0; j<SIZE; j++) {
-			printf("%3.2f ", D[i][j]);
+			printf("%.2f ", D[i][j]);
 		}
 		printf("\n");
 	}

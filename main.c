@@ -6,6 +6,7 @@ int main() {
 	int i, j;
 	int A[SIZE][SIZE], B[SIZE][SIZE], C[SIZE][SIZE];
 	double dst[SIZE][SIZE];
+	double inv[SIZE][SIZE];
 
     // Input matrixA
     printf("Enter A (3x3): ");
@@ -23,10 +24,12 @@ int main() {
 		}
 	}
 	
-	matMul(A, B, C);
-	printMatrix(C);
-	intMatToDouble(C, dst);  // Transform int C[][] to double dst[][]
-	printMatrixDouble(dst);
+	if(matInverse3x3(A, inv) == 1) {
+		printMatrixDouble(inv);
+	} else {
+		printf("No inverse matrix\n");
+	}
+	
 	
 	return 0;
 }
